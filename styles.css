@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Epilogue:wght@600;800&display=swap');
+
+:root {
+  --bg-pink: #FFC5D9; /* The iconic OK Tarot pink */
+  --text-main: #000000;
+  --bg-white: #ffffff;
+  --border-width: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background-color: var(--bg-pink);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-weight: 700;
+}
+
+/* Background elements for mystique - removed for flat design */
+.bg-glow {
+  display: none;
+}
+
+/* Navigation */
+nav {
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  z-index: 10;
+  border-bottom: var(--border-width) solid var(--text-main);
+  background: var(--bg-pink);
+}
+
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: var(--border-width) solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 800;
+}
+
+nav a:hover, nav a.active {
+  background-color: var(--text-main);
+  color: var(--bg-pink);
+}
+
+/* Main Container */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  z-index: 1;
+}
+
+#card-detail-main {
+  justify-content: flex-start;
+  padding-top: 3rem;
+}
+
+/* Typography */
+h1 {
+  font-family: 'Epilogue', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  text-align: center;
+  /* Retro chunky shadow */
+  text-shadow: 6px 6px 0px var(--bg-white), 8px 8px 0px var(--text-main);
+}
+
+.page-title {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  text-shadow: 4px 4px 0px var(--bg-white), 6px 6px 0px var(--text-main);
+}
+
+p.subtitle {
+  font-size: 1.5rem;
+  color: var(--text-main);
+  margin-bottom: 3rem;
+  text-align: center;
+  background: var(--bg-white);
+  padding: 0.5rem 1rem;
+  border: var(--border-width) solid var(--text-main);
+  box-shadow: 4px 4px 0px var(--text-main);
+  transform: rotate(-2deg);
+}
+
+/* Social Icons */
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  color: var(--text-main);
+  font-size: 2rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 6px 6px 0px var(--text-main);
+  border-radius: 50%; /* Quirky circle */
+}
+
+.social-icon:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px var(--text-main);
+  background: var(--text-main);
+  color: var(--bg-pink);
+}
+
+/* Cards Page Specifics */
+.table-container {
+  width: 100%;
+  max-width: 900px;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  padding: 2rem;
+  box-shadow: 8px 8px 0px var(--text-main);
+}
+
+.search-container {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  padding-left: 3rem;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  color: var(--text-main);
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px var(--text-main);
+}
+
+.search-input:focus {
+  outline: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text-main);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-main);
+  font-size: 1.2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: var(--border-width) solid var(--text-main);
+  font-size: 1.2rem;
+}
+
+th {
+  font-family: 'Epilogue', sans-serif;
+  color: var(--text-main);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+tr {
+  transition: all 0.2s ease;
+}
+
+tr:hover {
+  background-color: var(--bg-pink);
+}
+
+.card-type {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 3px solid var(--text-main);
+  background: var(--bg-white);
+  box-shadow: 3px 3px 0px var(--text-main);
+}
+
+/* Card Detail Page Styles */
+.back-link {
+  display: inline-block;
+  color: var(--text-main);
+  text-decoration: none;
+  font-family: 'Epilogue', sans-serif;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  background: var(--bg-white);
+  padding: 0.5rem 1rem;
+  border: var(--border-width) solid var(--text-main);
+  box-shadow: 4px 4px 0px var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text-main);
+}
+
+.card-detail-container {
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  padding: 3rem;
+  box-shadow: 12px 12px 0px var(--text-main);
+  text-align: center;
+  width: 100%;
+}
+
+.card-header h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 0px var(--bg-pink), 5px 5px 0px var(--text-main);
+}
+
+.large-type {
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 3rem;
+  display: inline-block;
+}
+
+.card-meaning {
+  text-align: left;
+  line-height: 1.6;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--bg-pink);
+  border: var(--border-width) solid var(--text-main);
+  box-shadow: 6px 6px 0px var(--text-main);
+}
+
+.card-actions {
+  margin-top: 2rem;
+}
+
+.external-link-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  color: var(--text-main);
+  text-decoration: none;
+  font-family: 'Epilogue', sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  transition: all 0.2s ease;
+  box-shadow: 6px 6px 0px var(--text-main);
+}
+
+.external-link-btn:hover {
+  background: var(--text-main);
+  color: var(--bg-pink);
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--bg-pink); /* contrasting shadow */
+}
+
+/* Animations - toned down for flat design but keep a bounce */
+.fade-in {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.fade-in-delayed {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+  opacity: 0;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  .page-title { font-size: 2.5rem; }
+  .social-links { flex-wrap: wrap; justify-content: center; }
+  nav { justify-content: center; padding: 1rem; }
+  .table-container { padding: 1rem; }
+  .card-detail-container { padding: 1.5rem; }
+}
+
+/* Appointment Page Styles */
+.appointment-container {
+  width: 100%;
+  max-width: 900px;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  padding: 3rem;
+  box-shadow: 12px 12px 0px var(--text-main);
+  text-align: center;
+}
+
+.calendly-placeholder {
+  border: 4px dashed var(--text-main);
+  background: var(--bg-pink);
+  padding: 4rem 2rem;
+  font-family: 'Epilogue', sans-serif;
+  color: var(--text-main);
+}
+
+.calendly-placeholder h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.calendly-placeholder p {
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Login Page Styles */
+.login-container {
+  width: 100%;
+  max-width: 500px;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  padding: 3rem;
+  box-shadow: 12px 12px 0px var(--text-main);
+  text-align: center;
+}
+
+.login-container h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 3px 3px 0px var(--bg-pink), 5px 5px 0px var(--text-main);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.login-input {
+  padding: 1rem;
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  color: var(--text-main);
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 4px 4px 0px var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.login-input:focus {
+  outline: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text-main);
+}
+
+.login-btn {
+  padding: 1rem;
+  background: var(--bg-pink);
+  border: var(--border-width) solid var(--text-main);
+  color: var(--text-main);
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 6px 6px 0px var(--text-main);
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.login-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--text-main);
+  background: var(--text-main);
+  color: var(--bg-pink);
+}
+
+#login-error {
+  color: #ff0000;
+  font-weight: 800;
+  margin-top: 1rem;
+  display: none;
+}
+
+/* Booking Form Styles */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .input-group {
+  flex: 1;
+}
+
+.submit-btn {
+  font-size: 1.5rem;
+  padding: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+/* Reviews Page Styles */
+.reviews-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.review-card {
+  background: var(--bg-white);
+  border: var(--border-width) solid var(--text-main);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 8px 8px 0px var(--text-main);
+  text-align: left;
+  transition: all 0.2s ease;
+  transform: rotate(-1deg);
+}
+
+.review-card:nth-child(even) {
+  transform: rotate(2deg);
+  background: var(--bg-pink);
+}
+
+.review-card:hover {
+  transform: translate(-4px, -4px) rotate(0deg);
+  box-shadow: 12px 12px 0px var(--text-main);
+}
+
+.review-stars {
+  color: var(--text-main);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.review-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.review-author {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  border-top: 2px dashed var(--text-main);
+  padding-top: 1rem;
+}

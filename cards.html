@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let authed = sessionStorage.getItem("admin_auth");
+        if (authed !== "true") {
+            window.location.href = "login.html";
+        }
+
+        function logout() {
+            sessionStorage.removeItem("admin_auth");
+            window.location.href = "index.html";
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Cards | Gale Tarot</title>
+    <meta name="description" content="Explore the 78 cards of the tarot deck including Major and Minor Arcana.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <nav>
+        <a href="index_admin.html">Home</a>
+        <a href="cards.html" class="active">Deck Dashboard</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+
+    <main>
+        <h1 class="page-title fade-in">The Deck</h1>
+
+        <div class="table-container fade-in-delayed">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="card-search" class="search-input" placeholder="Search for a card..."
+                    aria-label="Search cards">
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Card Name</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tarot-table-body">
+                        <!-- Populated by script.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="tarotData.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

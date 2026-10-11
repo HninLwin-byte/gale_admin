@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        let authed = sessionStorage.getItem("admin_auth");
+        if (authed !== "true") {
+            window.location.href = "login.html";
+        }
+
+        function logout() {
+            sessionStorage.removeItem("admin_auth");
+            window.location.href = "index.html";
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Meaning | Gale Tarot</title>
+    <meta name="description" content="Discover the meaning of this tarot card.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <nav>
+        <a href="index_admin.html">Home</a>
+        <a href="cards.html">Deck Dashboard</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+
+    <main id="card-detail-main">
+        <a href="cards.html" class="back-link fade-in"><i class="fas fa-arrow-left"></i> Back to Deck</a>
+
+        <div class="card-detail-container fade-in-delayed" id="card-detail-content">
+            <!-- Content will be populated by script.js -->
+            <div class="loading-text">Consulting the cards...</div>
+        </div>
+    </main>
+
+    <script src="tarotData.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
